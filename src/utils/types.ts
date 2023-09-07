@@ -1,7 +1,7 @@
 export type Nullable<T> = T | null;
 
 export type AccountantType = {
-  cell: string; // numer telefonu
+  cell: string;
   name: {
     first: string;
     last: string;
@@ -11,6 +11,7 @@ export type AccountantType = {
   login: {
     uuid: string;
   };
+  gender: "male" | "female";
 };
 
 export type AccountantResponseType = {

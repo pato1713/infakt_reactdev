@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { AccountantResponseType } from "../../utils/types";
 import { styled } from "styled-components";
 import AccountantCard from "../AccountantCard/AccountantCard";
@@ -18,12 +18,21 @@ const CardsLayout = styled.div`
 
 interface CardsRowProps {
   page: number;
+  onMountCallback: (page: number) => void;
 }
 
-const CardsRow: React.FC<CardsRowProps> = ({ page }) => {
+const CardsRow: React.FC<CardsRowProps> = ({ page, onMountCallback }) => {
+  const cardRef = useRef(null);
   const { data, loading, error } = useFetch<AccountantResponseType>(
-    `https://randomuser.me/api/?seed=abc&gender=female&page=${page}&results=4`
+    `https://randomuser.me/api/?seed=abc&page=${page}&results=4`
   );
+
+  useEffect(() => {
+    if (cardRef.current) {
+      onMountCallback(page);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardRef.current, onMountCallback, page]);
 
   if (loading)
     return (
@@ -35,7 +44,7 @@ const CardsRow: React.FC<CardsRowProps> = ({ page }) => {
   if (!data || error) return <></>;
 
   return (
-    <CardsLayout>
+    <CardsLayout ref={cardRef}>
       {React.Children.toArray(
         data?.results.map((accountant) => <AccountantCard {...accountant} />)
       )}

@@ -68,6 +68,7 @@ const AccountantCard: React.FC<AccountantType> = ({
   cell,
   email,
   login,
+  gender,
   name,
   picture,
 }) => {
@@ -76,14 +77,18 @@ const AccountantCard: React.FC<AccountantType> = ({
       <AccountantHeader>
         <AccountantPicture src={picture.medium} />
         <AccountantInfo>
-          <SecondaryText>{"Twoja księgowa"}</SecondaryText>
+          <SecondaryText>
+            {gender === "male" ? "Twój księgowy" : "Twoja księgowa"}
+          </SecondaryText>
           <PrimaryText $bold>{`${name.first} ${name.last}`}</PrimaryText>
         </AccountantInfo>
       </AccountantHeader>
       <AccountantContent>
         <div>
           <SecondaryText>{"E-mail"}</SecondaryText>
-          <PrimaryText $underline>{email}</PrimaryText>
+          <a href={`mailto:${email}`}>
+            <PrimaryText $underline>{email}</PrimaryText>
+          </a>
         </div>
         <div>
           <SecondaryText>{"Telefon"}</SecondaryText>
