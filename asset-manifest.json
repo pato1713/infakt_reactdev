@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/infakt_reactdev/static/js/main.5782c6aa.js",
+    "main.js": "/infakt_reactdev/static/js/main.36c5d0de.js",
     "static/media/logo.svg": "/infakt_reactdev/static/media/logo.57877b95ccdc68b5e5fd5a6cc91d7bfa.svg",
     "index.html": "/infakt_reactdev/index.html",
-    "main.5782c6aa.js.map": "/infakt_reactdev/static/js/main.5782c6aa.js.map"
+    "main.36c5d0de.js.map": "/infakt_reactdev/static/js/main.36c5d0de.js.map"
   },
   "entrypoints": [
-    "static/js/main.5782c6aa.js"
+    "static/js/main.36c5d0de.js"
   ]
 }
