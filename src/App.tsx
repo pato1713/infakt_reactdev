@@ -4,7 +4,7 @@ import Layout from "./components/Layout/Layout";
 
 export const App = () => (
   <Layout>
-    <BrowserRouter>
+    <BrowserRouter basename="/infakt_reactdev">
       <Routes>
         <Route path="/" element={<Navigate to="/ksiegowi" />} />
         <Route path="/ksiegowi" element={<Ksiegowi />} />
