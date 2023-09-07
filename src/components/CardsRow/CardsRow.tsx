@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { AccountantResponseType } from "../../utils/types";
 import { styled } from "styled-components";
 import AccountantCard from "../AccountantCard/AccountantCard";
@@ -27,12 +27,12 @@ const CardsRow: React.FC<CardsRowProps> = ({ page, onMountCallback }) => {
     `https://randomuser.me/api/?seed=abc&page=${page}&results=4`
   );
 
-  useEffect(() => {
-    if (cardRef.current) {
-      onMountCallback(page);
+  useLayoutEffect(() => {
+    if (data) {
+      // timeout added to avoid losing scroll precision
+      window.setTimeout(() => onMountCallback(page), 100);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardRef.current, onMountCallback, page]);
+  }, [data, onMountCallback, page]);
 
   if (loading)
     return (
